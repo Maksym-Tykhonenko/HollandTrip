@@ -4,9 +4,9 @@ import {Image, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import HollandScreen from './screens/HomeScreen';
-import OtherWorldScreen from './screens/HolandMapScreen';
-import ProfileScreen from './screens/ProfileScreen';
+import HollandRoute from './routes/HollandRoute';
+import OtherWorldRoute from './routes/OtherWorldRoute';
+import ProfileRoute from './routes/ProfileRoute';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,14 +21,15 @@ const App = () => {
         initialRouteName="Holland">
         <Tab.Screen
           name="Profile"
-          component={ProfileScreen}
+          component={ProfileRoute}
           options={{
+            tabBarActiveBackgroundColor: '#0db561',
             tabBarInactiveBackgroundColor: '#000',
             tabBarLabelStyle: {color: 'gold'},
             tabBarIcon: ({focused}) => {
               return (
                 <Image
-                  source={require('./assets/png/free-icon-profile-5987424.png')}
+                  source={require('./assets/png/free-icon-contact-11456604.png')}
                   style={{
                     marginTop: focused ? 5 : 0,
                     width: focused ? 60 : 35,
@@ -41,8 +42,9 @@ const App = () => {
         />
         <Tab.Screen
           name="Holland"
-          component={HollandScreen}
+          component={HollandRoute}
           options={{
+            tabBarActiveBackgroundColor: '#0db561',
             tabBarInactiveBackgroundColor: '#000',
             tabBarLabelStyle: {color: 'gold'},
             tabBarIcon: ({focused}) => {
@@ -60,15 +62,16 @@ const App = () => {
           }}
         />
         <Tab.Screen
-          name="OtherWorld"
-          component={OtherWorldScreen}
+          name="OtherWorldRoute"
+          component={OtherWorldRoute}
           options={{
+            tabBarActiveBackgroundColor: '#0db561',
             tabBarInactiveBackgroundColor: '#000',
             tabBarLabelStyle: {color: 'gold'},
             tabBarIcon: ({focused}) => {
               return (
                 <Image
-                  source={require('./assets/png/free-icon-world-chocolate-day-8471091.png')}
+                  source={require('./assets/png/free-icon-earth-3081518.png')}
                   style={{
                     marginTop: focused ? 5 : 0,
                     width: focused ? 60 : 35,
