@@ -10,6 +10,8 @@ import {
 //import {holandPlaces} from '../data/holandPlaces';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Dimensions} from 'react-native';
+import MapView, {Marker, Circle} from 'react-native-maps';
+import {Rating, AirbnbRating} from 'react-native-ratings';
 
 const HolandPlace = ({navigation, route}) => {
   const windowWidth = Dimensions.get('window').width;
@@ -24,7 +26,13 @@ const HolandPlace = ({navigation, route}) => {
     whatToDo,
     price,
   } = route.params.place;
+  const [placeRaiting, setPlaceRaiting] = useState(0);
   console.log(route.params.place);
+
+  const ratingCompleted = rating => {
+    console.log('Rating is: ' + rating);
+    setPlaceRaiting(rating);
+  };
   return (
     <View style={{flex: 1}}>
       <ImageBackground
@@ -43,12 +51,19 @@ const HolandPlace = ({navigation, route}) => {
               borderWidth: 3,
               margin: 10,
               borderRadius: 15,
+              paddingHorizontal: 7,
             }}>
-            <Text style={{fontSize: 40, fontFamily: 'Chewy-Regular'}}>
+            <Text
+              style={{
+                fontSize: 40,
+                fontFamily: 'Chewy-Regular',
+                //color: '#fff',
+                marginBottom: 5,
+              }}>
               {name}
             </Text>
             <ScrollView showsVerticalScrollIndicator={false}>
-              <View style={{}}>
+              <View style={{marginBottom: 10}}>
                 <Image
                   style={{
                     width: windowWidth * 0.9,
@@ -58,11 +73,92 @@ const HolandPlace = ({navigation, route}) => {
                   }}
                   source={photo}
                 />
+
+                {placeRaiting < 1 && (
+                  <View style={{alignItems: 'center', marginBottom: -30}}>
+                    <Text
+                      style={{
+                        fontSize: 30,
+                        fontFamily: 'Chewy-Regular',
+                        //color: '#fff',
+                      }}>
+                      Please select raiting!
+                    </Text>
+                  </View>
+                )}
+                <AirbnbRating
+                  style={{color: '#000'}}
+                  onFinishRating={ratingCompleted}
+                  defaultRating={placeRaiting}
+                />
               </View>
 
+              <View>
+                <Text
+                  style={{
+                    fontFamily: 'Chewy-Regular',
+                    fontSize: 25,
+                    marginBottom: 15,
+                  }}>
+                  <Text style={{color: '#fff'}}>Description: </Text>
+                  {briefDescription}
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: 'Chewy-Regular',
+                    fontSize: 25,
+                    marginBottom: 15,
+                  }}>
+                  <Text style={{color: '#fff'}}>What to do: </Text>
+                  {whatToDo}
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: 'Chewy-Regular',
+                    fontSize: 25,
+                    marginBottom: 15,
+                  }}>
+                  <Text style={{color: '#fff'}}>Price: </Text>
+                  {price}
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: 'Chewy-Regular',
+                    fontSize: 25,
+                    marginBottom: 15,
+                  }}>
+                  <Text style={{color: '#fff'}}>Address: </Text>
+                  {address}
+                </Text>
+              </View>
+              <MapView
+                style={{
+                  height: 200,
+                  marginBottom: 5,
+                  borderRadius: 10,
+                  borderWidth: 3,
+                }}
+                initialRegion={{
+                  latitude: latitude,
+                  longitude: longitude,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421,
+                }}>
+                <Marker
+                  coordinate={{
+                    latitude: latitude,
+                    longitude: longitude,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                  }}
+                />
+              </MapView>
+              <View></View>
               <View style={{height: 150}}></View>
             </ScrollView>
           </View>
+
+          {/**BTN BAck */}
           <TouchableOpacity
             onPress={() => {
               navigation.goBack();
