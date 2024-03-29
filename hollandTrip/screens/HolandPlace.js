@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
@@ -12,6 +12,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {Dimensions} from 'react-native';
 import MapView, {Marker, Circle} from 'react-native-maps';
 import {Rating, AirbnbRating} from 'react-native-ratings';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HolandPlace = ({navigation, route}) => {
   const windowWidth = Dimensions.get('window').width;
@@ -27,7 +28,40 @@ const HolandPlace = ({navigation, route}) => {
     price,
   } = route.params.place;
   const [placeRaiting, setPlaceRaiting] = useState(0);
-  console.log(route.params.place);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    setData();
+  }, [placeRaiting]);
+
+  const setData = async () => {
+    try {
+      const data = {
+        placeRaiting,
+      };
+      const jsonData = JSON.stringify(data);
+      await AsyncStorage.setItem(`HolandPlace${name}`, jsonData);
+      console.log('Дані збережено в AsyncStorage');
+    } catch (e) {
+      console.log('Помилка збереження даних:', e);
+    }
+  };
+
+  const getData = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem(`HolandPlace${name}`);
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setPlaceRaiting(parsedData.placeRaiting);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
 
   const ratingCompleted = rating => {
     console.log('Rating is: ' + rating);
