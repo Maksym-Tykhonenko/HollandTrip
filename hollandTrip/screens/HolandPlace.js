@@ -6,6 +6,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Modal,
 } from 'react-native';
 //import {holandPlaces} from '../data/holandPlaces';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -13,6 +14,7 @@ import {Dimensions} from 'react-native';
 import MapView, {Marker, Circle} from 'react-native-maps';
 import {Rating, AirbnbRating} from 'react-native-ratings';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const HolandPlace = ({navigation, route}) => {
   const windowWidth = Dimensions.get('window').width;
@@ -28,6 +30,9 @@ const HolandPlace = ({navigation, route}) => {
     price,
   } = route.params.place;
   const [placeRaiting, setPlaceRaiting] = useState(0);
+  const [selectPhoto, setSelectPhoto] = useState([]);
+  console.log('selectPhoto==>', selectPhoto);
+  const [modalWithPhoto, setModalWithPhoto] = useState(false);
 
   useEffect(() => {
     getData();
@@ -41,6 +46,7 @@ const HolandPlace = ({navigation, route}) => {
     try {
       const data = {
         placeRaiting,
+        //selectPhoto,
       };
       const jsonData = JSON.stringify(data);
       await AsyncStorage.setItem(`HolandPlace${name}`, jsonData);
@@ -57,10 +63,28 @@ const HolandPlace = ({navigation, route}) => {
         const parsedData = JSON.parse(jsonData);
         console.log('parsedData==>', parsedData);
         setPlaceRaiting(parsedData.placeRaiting);
+        //setSelectPhoto(parsedData.selectPhoto);
       }
     } catch (e) {
       console.log('Помилка отримання даних:', e);
     }
+  };
+
+  const ImagePicker = () => {
+    let options = {
+      storageOptions: {
+        path: 'image',
+      },
+    };
+
+    launchImageLibrary(options, response => {
+      if (!response.didCancel) {
+        console.log('response==>', response.assets[0].uri);
+        setSelectPhoto([...selectPhoto, response.assets[0].uri]);
+      } else {
+        console.log('Вибір скасовано');
+      }
+    });
   };
 
   const ratingCompleted = rating => {
@@ -168,7 +192,7 @@ const HolandPlace = ({navigation, route}) => {
               <MapView
                 style={{
                   height: 200,
-                  marginBottom: 5,
+                  marginBottom: 20,
                   borderRadius: 10,
                   borderWidth: 3,
                 }}
@@ -187,10 +211,113 @@ const HolandPlace = ({navigation, route}) => {
                   }}
                 />
               </MapView>
-              <View></View>
+              <View
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    ImagePicker();
+                  }}
+                  style={{
+                    width: 150,
+                    height: 150,
+                    borderWidth: 3,
+                    borderRadius: 15,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#f87c',
+                  }}>
+                  <Text style={{fontFamily: 'Chewy-Regular', fontSize: 25}}>
+                    Press for
+                  </Text>
+                  <Text style={{fontFamily: 'Chewy-Regular', fontSize: 25}}>
+                    add photo
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  onPress={() => {
+                    setModalWithPhoto(true);
+                  }}
+                  style={{
+                    width: 150,
+                    height: 150,
+                    borderWidth: 3,
+                    borderRadius: 15,
+                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                    backgroundColor: '#f87c',
+                  }}>
+                  <Image
+                    style={{width: 100, height: 100}}
+                    source={require('../assets/png/free-icon-folder-2521820.png')}
+                  />
+                  <Text style={{fontFamily: 'Chewy-Regular', fontSize: 20}}>
+                    Photo album
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
               <View style={{height: 150}}></View>
             </ScrollView>
           </View>
+
+          {/**Photo gallare */}
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modalWithPhoto}>
+            <View
+              style={{
+                backgroundColor: '#0db561',
+                flex: 1,
+                marginTop: '10%',
+                borderTopLeftRadius: 10,
+                borderTopRightRadius: 10,
+                borderColor: '#000',
+                borderWidth: 3,
+              }}>
+              <View style={{alignItems: 'flex-end'}}>
+                <TouchableOpacity
+                  style={{marginTop: 10, marginRight: 10}}
+                  onPress={() => {
+                    setModalWithPhoto(false);
+                  }}>
+                  <Image
+                    source={require('../assets/png/free-icon-cross-391219.png')}
+                    style={{width: 60, height: 60}}
+                  />
+                </TouchableOpacity>
+              </View>
+
+              <ScrollView>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    flexWrap: 'wrap-reverse',
+                  }}>
+                  {selectPhoto &&
+                    selectPhoto.map((photo, index) => {
+                      return (
+                        <Image
+                          source={{uri: photo}}
+                          key={index}
+                          style={{
+                            width: '45%',
+                            height: 150,
+                            marginLeft: '3%',
+                            marginBottom: 10,
+                            borderRadius: 15,
+                            borderWidth: 3,
+                            borderColor: '#000',
+                          }}
+                        />
+                      );
+                    })}
+                </View>
+                <View style={{marginBottom: 100}}></View>
+              </ScrollView>
+            </View>
+          </Modal>
 
           {/**BTN BAck */}
           <TouchableOpacity
