@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Modal,
 } from 'react-native';
-import {holandPlaces} from '../data/holandPlaces';
+//import {holandPlaces} from '../data/holandPlaces';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Dimensions} from 'react-native';
 import MapView, {Marker, Circle} from 'react-native-maps';
@@ -17,7 +17,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {uid} from 'uid';
 
-const OtherWorldPlace = ({navigation, route}) => {
+const NewHolandPlace = ({navigation, route}) => {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
   const {
@@ -51,7 +51,7 @@ const OtherWorldPlace = ({navigation, route}) => {
       };
       //const dataPhoto = [selectPhoto];
       const jsonData = JSON.stringify(data);
-      await AsyncStorage.setItem(`OtherWorldPlace${name}`, jsonData);
+      await AsyncStorage.setItem(`NewHolandPlace${name}`, jsonData);
       console.log('Дані збережено в AsyncStorage');
       console.log('55', jsonData);
     } catch (e) {
@@ -61,7 +61,7 @@ const OtherWorldPlace = ({navigation, route}) => {
 
   const getData = async () => {
     try {
-      const jsonData = await AsyncStorage.getItem(`OtherWorldPlace${name}`);
+      const jsonData = await AsyncStorage.getItem(`NewHolandPlace${name}`);
       if (jsonData !== null) {
         const parsedData = JSON.parse(jsonData);
         console.log('parsedData==>', parsedData);
@@ -345,4 +345,4 @@ const OtherWorldPlace = ({navigation, route}) => {
   );
 };
 
-export default OtherWorldPlace;
+export default NewHolandPlace;

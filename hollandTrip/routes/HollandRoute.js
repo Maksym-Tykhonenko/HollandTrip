@@ -5,6 +5,7 @@ const Stack = createNativeStackNavigator();
 
 import HollandScreen from '../screens/HollandScreen';
 import HolandPlace from '../screens/HolandPlace';
+import NewHolandPlace from '../screens/NewHolandPlace';
 
 const HollandRoute = () => {
   return (
@@ -20,6 +21,14 @@ const HollandRoute = () => {
       <Stack.Screen
         name="HolandPlace"
         component={HolandPlace}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="NewHolandPlace"
+        component={NewHolandPlace}
         options={{
           headerShown: false,
         }}

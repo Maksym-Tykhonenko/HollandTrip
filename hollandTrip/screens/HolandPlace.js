@@ -15,6 +15,7 @@ import MapView, {Marker, Circle} from 'react-native-maps';
 import {Rating, AirbnbRating} from 'react-native-ratings';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {uid} from 'uid';
 
 const HolandPlace = ({navigation, route}) => {
   const windowWidth = Dimensions.get('window').width;
@@ -40,13 +41,13 @@ const HolandPlace = ({navigation, route}) => {
 
   useEffect(() => {
     setData();
-  }, [placeRaiting]);
-
+  }, [placeRaiting, selectPhoto]);
+  //placeRaiting
   const setData = async () => {
     try {
       const data = {
         placeRaiting,
-        //selectPhoto,
+        selectPhoto,
       };
       const jsonData = JSON.stringify(data);
       await AsyncStorage.setItem(`HolandPlace${name}`, jsonData);
@@ -63,24 +64,24 @@ const HolandPlace = ({navigation, route}) => {
         const parsedData = JSON.parse(jsonData);
         console.log('parsedData==>', parsedData);
         setPlaceRaiting(parsedData.placeRaiting);
-        //setSelectPhoto(parsedData.selectPhoto);
+        setSelectPhoto(parsedData.selectPhoto);
       }
     } catch (e) {
       console.log('Помилка отримання даних:', e);
     }
   };
 
-  const ImagePicker = () => {
+  const ImagePicer = () => {
     let options = {
-      storageOptions: {
+      storageOptios: {
         path: 'image',
       },
     };
 
     launchImageLibrary(options, response => {
       if (!response.didCancel) {
-        console.log('response==>', response.assets[0].uri);
-        setSelectPhoto([...selectPhoto, response.assets[0].uri]);
+        //console.log('response==>', response.assets[0].uri);
+        setSelectPhoto([response.assets[0].uri, ...selectPhoto]);
       } else {
         console.log('Вибір скасовано');
       }
@@ -215,27 +216,6 @@ const HolandPlace = ({navigation, route}) => {
                 style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                 <TouchableOpacity
                   onPress={() => {
-                    ImagePicker();
-                  }}
-                  style={{
-                    width: 150,
-                    height: 150,
-                    borderWidth: 3,
-                    borderRadius: 15,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: '#f87c',
-                  }}>
-                  <Text style={{fontFamily: 'Chewy-Regular', fontSize: 25}}>
-                    Press for
-                  </Text>
-                  <Text style={{fontFamily: 'Chewy-Regular', fontSize: 25}}>
-                    add photo
-                  </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                  onPress={() => {
                     setModalWithPhoto(true);
                   }}
                   style={{
@@ -278,7 +258,7 @@ const HolandPlace = ({navigation, route}) => {
               }}>
               <View style={{alignItems: 'flex-end'}}>
                 <TouchableOpacity
-                  style={{marginTop: 10, marginRight: 10}}
+                  style={{marginTop: 10, marginRight: 10, marginBottom: 10}}
                   onPress={() => {
                     setModalWithPhoto(false);
                   }}>
@@ -287,32 +267,60 @@ const HolandPlace = ({navigation, route}) => {
                     style={{width: 60, height: 60}}
                   />
                 </TouchableOpacity>
+
+                <View
+                  style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginRight: 25,
+                    marginBottom: 10,
+                  }}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      ImagePicer();
+                    }}
+                    style={{
+                      width: 350,
+                      height: 60,
+                      borderWidth: 3,
+                      borderRadius: 15,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: '#f87c',
+                    }}>
+                    <Text style={{fontFamily: 'Chewy-Regular', fontSize: 25}}>
+                      Press for
+                    </Text>
+                    <Text style={{fontFamily: 'Chewy-Regular', fontSize: 25}}>
+                      add photo
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               </View>
 
               <ScrollView>
                 <View
                   style={{
                     flexDirection: 'row',
-                    flexWrap: 'wrap-reverse',
+                    flexWrap: 'wrap',
                   }}>
-                  {selectPhoto &&
-                    selectPhoto.map((photo, index) => {
-                      return (
-                        <Image
-                          source={{uri: photo}}
-                          key={index}
-                          style={{
-                            width: '45%',
-                            height: 150,
-                            marginLeft: '3%',
-                            marginBottom: 10,
-                            borderRadius: 15,
-                            borderWidth: 3,
-                            borderColor: '#000',
-                          }}
-                        />
-                      );
-                    })}
+                  {selectPhoto.map(i => {
+                    return (
+                      <Image
+                        source={{uri: i}}
+                        key={uid()}
+                        style={{
+                          width: '45%',
+                          height: 150,
+                          marginLeft: '3%',
+                          marginBottom: 10,
+                          borderRadius: 15,
+                          borderWidth: 3,
+                          borderColor: '#000',
+                        }}
+                      />
+                    );
+                  })}
                 </View>
                 <View style={{marginBottom: 100}}></View>
               </ScrollView>

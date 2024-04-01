@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
@@ -17,6 +17,7 @@ import {holandPlaces} from '../data/holandPlaces';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Dimensions} from 'react-native';
 import {uid} from 'uid';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const HollandScreen = ({navigation}) => {
@@ -33,6 +34,44 @@ const HollandScreen = ({navigation}) => {
   const [placePrice, setPlacePrice] = useState('');
   const [selectPhoto, setSelectPhoto] = useState(null);
   console.log('newPlace==>', newPlaces);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    setData();
+  }, [newPlaces]);
+  //, selectPhoto
+  const setData = async () => {
+    try {
+      const data = {
+        newPlaces,
+        //selectPhoto,
+      };
+      //const dataPhoto = [selectPhoto];
+      const jsonData = JSON.stringify(data);
+      await AsyncStorage.setItem(`HollandScreen`, jsonData);
+      console.log('Дані збережено в AsyncStorage');
+      console.log('55', jsonData);
+    } catch (e) {
+      console.log('Помилка збереження даних:', e);
+    }
+  };
+
+  const getData = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem(`HollandScreen`);
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setNewPlaces(parsedData.newPlaces);
+        //setSelectPhoto(parsedData.selectPhoto);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
 
   const ImagePicer = () => {
     let options = {
@@ -108,7 +147,7 @@ const HollandScreen = ({navigation}) => {
                 return (
                   <TouchableOpacity
                     onPress={() => {
-                      navigation.navigate('HolandPlace', {place: place});
+                      navigation.navigate('NewHolandPlace', {place: place});
                     }}
                     activeOpacity={0.7}
                     style={{

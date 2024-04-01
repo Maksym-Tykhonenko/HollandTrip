@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
@@ -18,6 +18,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {Dimensions} from 'react-native';
 import {uid} from 'uid';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const OtherWorldScreen = ({navigation}) => {
   const windowWidth = Dimensions.get('window').width;
@@ -33,6 +34,40 @@ const OtherWorldScreen = ({navigation}) => {
   const [placePrice, setPlacePrice] = useState('');
   const [selectPhoto, setSelectPhoto] = useState(null);
   console.log('newPlace==>', newPlaces);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    setData();
+  }, [newPlaces]);
+  //placeRaiting
+  const setData = async () => {
+    try {
+      const data = {
+        newPlaces,
+      };
+      const jsonData = JSON.stringify(data);
+      await AsyncStorage.setItem(`HolandPlace`, jsonData);
+      console.log('Дані збережено в AsyncStorage');
+    } catch (e) {
+      console.log('Помилка збереження даних:', e);
+    }
+  };
+
+  const getData = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem(`HolandPlace`);
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setNewPlaces(parsedData.newPlaces);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
 
   const ImagePicer = () => {
     let options = {
