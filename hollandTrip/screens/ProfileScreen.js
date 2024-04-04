@@ -189,7 +189,7 @@ const ProfileScreen = () => {
     <View style={{flex: 1}}>
       <ImageBackground
         style={{flex: 1}}
-        source={require('../assets/bgr3.jpeg')}>
+        source={require('../assets/apgrDiz/backgr.jpg')}>
         <SafeAreaView
           style={{
             flex: 1,
@@ -327,7 +327,7 @@ const ProfileScreen = () => {
                   borderRadius: 15,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: '#0db561',
+                  backgroundColor: '#b20378',
                 }}>
                 <Text style={{fontFamily: 'Chewy-Regular', fontSize: 25}}>
                   {name}
@@ -350,7 +350,7 @@ const ProfileScreen = () => {
                   borderRadius: 15,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: '#0db561',
+                  backgroundColor: '#b20378',
                 }}>
                 <Text style={{fontFamily: 'Chewy-Regular', fontSize: 20}}>
                   If you visited some place, press on it!!!
@@ -550,7 +550,7 @@ const ProfileScreen = () => {
                   borderWidth: 3,
                   borderRadius: 15,
 
-                  backgroundColor: '#0db561',
+                  backgroundColor: '#b20378',
                 }}>
                 <View
                   style={{
@@ -639,7 +639,7 @@ const ProfileScreen = () => {
                 style={{
                   borderWidth: 3,
                   borderRadius: 15,
-                  backgroundColor: '#0db561',
+                  backgroundColor: '#b20378',
                   height: 50,
                   width: 300,
                   alignItems: 'center',
@@ -661,7 +661,7 @@ const ProfileScreen = () => {
                       padding: 10,
                       borderWidth: 3,
                       borderRadius: 15,
-                      backgroundColor: '#0db561',
+                      backgroundColor: '#b20378',
                     }}
                     key={uid()}>
                     <Text>{i.selected}</Text>
@@ -684,7 +684,7 @@ const ProfileScreen = () => {
                 style={{
                   alignItems: 'center',
                   paddingTop: 40,
-                  backgroundColor: '#0db561',
+                  backgroundColor: '#b20378',
                   flex: 1,
                   marginRight: '5%',
                   marginLeft: '5%',

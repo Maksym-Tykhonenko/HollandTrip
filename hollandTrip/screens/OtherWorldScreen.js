@@ -116,7 +116,7 @@ const OtherWorldScreen = ({navigation}) => {
     <View style={{flex: 1}}>
       <ImageBackground
         style={{flex: 1}}
-        source={require('../assets/bgr3.jpeg')}>
+        source={require('../assets/apgrDiz/backgr.jpg')}>
         <SafeAreaView style={{}}>
           <View style={{marginBottom: 10}}>
             <TouchableOpacity
@@ -151,7 +151,7 @@ const OtherWorldScreen = ({navigation}) => {
                       height: 60,
                       alignItems: 'center',
                       justifyContent: 'center',
-                      backgroundColor: '#0db561',
+                      backgroundColor: '#b20378',
                       borderRadius: 10,
                       borderWidth: 3,
                       borderColor: '#000',
@@ -193,7 +193,7 @@ const OtherWorldScreen = ({navigation}) => {
                     width: windowWidth - 6,
                     borderRadius: 40,
                   }}
-                  source={require('../assets/bgr3.jpeg')}
+                  source={require('../assets/apgrDiz/backgr.jpg')}
                 />
                 <View style={{flexDirection: 'row-reverse'}}>
                   <TouchableOpacity
@@ -234,7 +234,7 @@ const OtherWorldScreen = ({navigation}) => {
                           placeholder="Name"
                           style={{
                             color: '#000',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             width: '80%',
                             height: 60,
                             borderColor: '#000',
@@ -253,7 +253,7 @@ const OtherWorldScreen = ({navigation}) => {
                           placeholder="Address"
                           style={{
                             color: '#000',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             width: '80%',
                             height: 60,
                             borderColor: '#000',
@@ -272,7 +272,7 @@ const OtherWorldScreen = ({navigation}) => {
                           placeholder="Description"
                           style={{
                             color: '#000',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             width: '80%',
                             height: 120,
                             borderColor: '#000',
@@ -291,7 +291,7 @@ const OtherWorldScreen = ({navigation}) => {
                           placeholder="What to do"
                           style={{
                             color: '#000',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             width: '80%',
                             height: 120,
                             borderColor: '#000',
@@ -310,7 +310,7 @@ const OtherWorldScreen = ({navigation}) => {
                           placeholder="Price"
                           style={{
                             color: '#000',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             width: '80%',
                             height: 120,
                             borderColor: '#000',
@@ -336,7 +336,7 @@ const OtherWorldScreen = ({navigation}) => {
                               borderRadius: 15,
                               alignItems: 'center',
                               justifyContent: 'center',
-                              backgroundColor: '#0db561',
+                              backgroundColor: '#b20378',
                               marginTop: 20,
                               marginBottom: 20,
                               //marginLeft: 10,
@@ -362,7 +362,7 @@ const OtherWorldScreen = ({navigation}) => {
                               borderColor: '#000',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              backgroundColor: '#0db561',
+                              backgroundColor: '#b20378',
                             }}
                           />
                         )}
@@ -378,7 +378,7 @@ const OtherWorldScreen = ({navigation}) => {
                             borderRadius: 15,
                             alignItems: 'center',
                             justifyContent: 'center',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             marginTop: 20,
                             marginBottom: 20,
                             marginLeft: 10,

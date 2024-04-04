@@ -120,7 +120,7 @@ const HollandScreen = ({navigation}) => {
     <View style={{flex: 1}}>
       <ImageBackground
         style={{flex: 1}}
-        source={require('../assets/bgr3.jpeg')}>
+        source={require('../assets/apgrDiz/backgr.jpg')}>
         <SafeAreaView style={{}}>
           <View style={{marginBottom: 10}}>
             <TouchableOpacity
@@ -155,8 +155,8 @@ const HollandScreen = ({navigation}) => {
                       height: 60,
                       alignItems: 'center',
                       justifyContent: 'center',
-                      backgroundColor: '#0db561',
-                      borderRadius: 10,
+                      backgroundColor: '#b20378',
+                      borderRadius: 20,
                       borderWidth: 3,
                       borderColor: '#000',
                       marginBottom: 10,
@@ -186,8 +186,8 @@ const HollandScreen = ({navigation}) => {
                       height: 60,
                       alignItems: 'center',
                       justifyContent: 'center',
-                      backgroundColor: '#0db561',
-                      borderRadius: 10,
+                      backgroundColor: '#b20378',
+                      borderRadius: 20,
                       borderWidth: 3,
                       borderColor: '#000',
                       marginBottom: 10,
@@ -227,7 +227,7 @@ const HollandScreen = ({navigation}) => {
                     width: windowWidth - 6,
                     borderRadius: 40,
                   }}
-                  source={require('../assets/bgr3.jpeg')}
+                  source={require('../assets/apgrDiz/backgr.jpg')}
                 />
                 <View style={{flexDirection: 'row-reverse'}}>
                   <TouchableOpacity
@@ -268,7 +268,7 @@ const HollandScreen = ({navigation}) => {
                           placeholder="Name"
                           style={{
                             color: '#000',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             width: '80%',
                             height: 60,
                             borderColor: '#000',
@@ -287,7 +287,7 @@ const HollandScreen = ({navigation}) => {
                           placeholder="Address"
                           style={{
                             color: '#000',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             width: '80%',
                             height: 60,
                             borderColor: '#000',
@@ -306,7 +306,7 @@ const HollandScreen = ({navigation}) => {
                           placeholder="Description"
                           style={{
                             color: '#000',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             width: '80%',
                             height: 120,
                             borderColor: '#000',
@@ -325,7 +325,7 @@ const HollandScreen = ({navigation}) => {
                           placeholder="What to do"
                           style={{
                             color: '#000',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             width: '80%',
                             height: 120,
                             borderColor: '#000',
@@ -344,7 +344,7 @@ const HollandScreen = ({navigation}) => {
                           placeholder="Price"
                           style={{
                             color: '#000',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             width: '80%',
                             height: 120,
                             borderColor: '#000',
@@ -370,7 +370,7 @@ const HollandScreen = ({navigation}) => {
                               borderRadius: 15,
                               alignItems: 'center',
                               justifyContent: 'center',
-                              backgroundColor: '#0db561',
+                              backgroundColor: '#b20378',
                               marginTop: 20,
                               marginBottom: 20,
                               //marginLeft: 10,
@@ -396,7 +396,7 @@ const HollandScreen = ({navigation}) => {
                               borderColor: '#000',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              backgroundColor: '#0db561',
+                              backgroundColor: '#b20378',
                             }}
                           />
                         )}
@@ -412,7 +412,7 @@ const HollandScreen = ({navigation}) => {
                             borderRadius: 15,
                             alignItems: 'center',
                             justifyContent: 'center',
-                            backgroundColor: '#0db561',
+                            backgroundColor: '#b20378',
                             marginTop: 20,
                             marginBottom: 20,
                             marginLeft: 10,

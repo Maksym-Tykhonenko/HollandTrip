@@ -109,4 +109,16 @@ export const holandPlaces = [
     whatToDo: `  Guests can enjoy luxurious rooms and suites with stylish decor and modern amenities, dine at the hotel's Michelin-starred restaurant or garden terrace, relax in the tranquil inner gardens, and explore nearby attractions.`,
     price: `  Room rates at Hotel Pulitzer Amsterdam vary depending on the type of room, time of booking, and availability, starting from approximately €300 per night for a standard room.`,
   },
+  {
+    id: 11,
+    name: 'Holland Casino',
+    photo: require('../assets/apgrDiz/pic1.jpg'),
+    address:
+      ' Holland Casino, Max Euweplein 62, 1017 MB Amsterdam, Netherlands ',
+    latitude: 52.362165717109065,
+    longitude: 4.882643014778478,
+    briefDescription: `  Holland Casino offers a thrilling gaming experience in the heart of Amsterdam. With a wide range of games and entertainment options, it's the perfect destination for a night out.`,
+    whatToDo: `  At Holland Casino, guests can try their luck at various casino games such as poker, roulette, and slot machines. The casino also hosts live entertainment events, bars, and restaurants for a complete evening of fun.`,
+    price: `  Prices for gaming at Holland Casino vary depending on the game and stakes. Visitors can purchase chips or gaming vouchers to participate in their preferred games.`,
+  },
 ];

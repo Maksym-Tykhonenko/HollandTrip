@@ -96,7 +96,7 @@ const HolandPlace = ({navigation, route}) => {
     <View style={{flex: 1}}>
       <ImageBackground
         style={{flex: 1}}
-        source={require('../assets/bgr3.jpeg')}>
+        source={require('../assets/apgrDiz/backgr.jpg')}>
         <SafeAreaView style={{position: 'relative', flex: 1}}>
           <View style={{marginBottom: 10}}>
             <TouchableOpacity activeOpacity={0.7}></TouchableOpacity>
@@ -105,7 +105,7 @@ const HolandPlace = ({navigation, route}) => {
             style={{
               flex: 1,
               alignItems: 'center',
-              backgroundColor: 'rgba(13, 181, 97, 0.6)',
+              backgroundColor: 'rgba(255, 255, 255, 0.5)',
               borderColor: '#000',
               borderWidth: 3,
               margin: 10,
@@ -225,7 +225,7 @@ const HolandPlace = ({navigation, route}) => {
                     borderRadius: 15,
                     alignItems: 'center',
                     justifyContent: 'flex-end',
-                    backgroundColor: '#f87c',
+                    backgroundColor: '#b20378',
                   }}>
                   <Image
                     style={{width: 100, height: 100}}
@@ -248,7 +248,7 @@ const HolandPlace = ({navigation, route}) => {
             visible={modalWithPhoto}>
             <View
               style={{
-                backgroundColor: '#0db561',
+                backgroundColor: '#b20378',
                 flex: 1,
                 marginTop: '10%',
                 borderTopLeftRadius: 10,
@@ -281,7 +281,7 @@ const HolandPlace = ({navigation, route}) => {
                     }}
                     style={{
                       width: 350,
-                      height: 60,
+                      height: 80,
                       borderWidth: 3,
                       borderRadius: 15,
                       alignItems: 'center',
@@ -342,7 +342,7 @@ const HolandPlace = ({navigation, route}) => {
               alignItems: 'center',
               justifyContent: 'center',
               borderRadius: 15,
-              backgroundColor: '#0db561',
+              backgroundColor: '#b20378',
             }}>
             <Text
               style={{
