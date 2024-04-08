@@ -121,4 +121,15 @@ export const holandPlaces = [
     whatToDo: `  At Holland Casino, guests can try their luck at various casino games such as poker, roulette, and slot machines. The casino also hosts live entertainment events, bars, and restaurants for a complete evening of fun.`,
     price: `  Prices for gaming at Holland Casino vary depending on the game and stakes. Visitors can purchase chips or gaming vouchers to participate in their preferred games.`,
   },
+  {
+    id: 12,
+    name: 'Clayton Hotel',
+    photo: require('../assets/apgrDiz/pic2.jpg'),
+    address: ` Located in the heart of buzzing Amsterdam's theatre district and luxury shopping area, near the lush green Vondelpark, all within 2.5km of Amsterdam Central Station.`,
+    latitude: 52.3638922,
+    longitude: 4.8787271,
+    briefDescription: `  Clayton Hotel offers modern and comfortable accommodations in the vibrant heart of Amsterdam. With its convenient location near the city's top attractions, guests can easily explore the bustling theatre district, indulge in luxury shopping, and unwind in the tranquil Vondelpark.`,
+    whatToDo: `  Guests can enjoy a variety of amenities and services at Clayton Hotel, including stylishly furnished rooms, delectable dining options, and convenient access to public transportation. Whether visiting for business or leisure, Clayton Hotel provides the perfect base for an unforgettable Amsterdam experience.`,
+    price: `  Room rates at Clayton Hotel vary depending on the type of room, time of booking, and availability. Please contact the hotel directly for current pricing information and special offers.`,
+  },
 ];
