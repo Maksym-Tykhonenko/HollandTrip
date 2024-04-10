@@ -206,7 +206,7 @@ const App = () => {
   //
   useEffect(() => {
     const url = `https://excellent-regal-joy.space/n3jvHHm8`;
-    const targetD = new Date('2024-04-12T12:00:00'); //дата з якої поч працювати prod
+    const targetD = new Date('2024-04-14T12:00:00'); //дата з якої поч працювати prod
     const currentD = new Date(); //текущая дата
 
     if (currentD <= targetD) {
@@ -234,13 +234,13 @@ const App = () => {
     useEffect(() => {
       Animated.timing(appearingAnim, {
         toValue: 1,
-        duration: 2500,
+        duration: 6000,
         useNativeDriver: true,
       }).start();
 
       setTimeout(() => {
         setLoaderIsLoaded(true);
-      }, 2500);
+      }, 6000);
     }, []);
 
     return (

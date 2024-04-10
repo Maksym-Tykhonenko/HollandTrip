@@ -105,18 +105,18 @@ const HolandPlace = ({navigation, route}) => {
             style={{
               flex: 1,
               alignItems: 'center',
-              backgroundColor: 'rgba(255, 255, 255, 0.5)',
-              borderColor: '#000',
-              borderWidth: 3,
+              //backgroundColor: 'rgba(255, 255, 255, 0.5)',
+              //borderColor: '#000',
+              //borderWidth: 3,
               margin: 10,
-              borderRadius: 15,
+              //borderRadius: 15,
               paddingHorizontal: 7,
             }}>
             <Text
               style={{
                 fontSize: 40,
-                fontFamily: 'Chewy-Regular',
-                //color: '#fff',
+                fontWeight: 'bold',
+                color: '#fff',
                 marginBottom: 5,
               }}>
               {name}
@@ -127,8 +127,8 @@ const HolandPlace = ({navigation, route}) => {
                   style={{
                     width: windowWidth * 0.9,
                     height: 200,
-                    borderWidth: 3,
-                    borderRadius: 15,
+                    //borderWidth: 3,
+                    //borderRadius: 15,
                   }}
                   source={photo}
                 />
@@ -138,8 +138,8 @@ const HolandPlace = ({navigation, route}) => {
                     <Text
                       style={{
                         fontSize: 30,
-                        fontFamily: 'Chewy-Regular',
-                        //color: '#fff',
+                        fontWeight: 'bold',
+                        color: '#fff',
                       }}>
                       Please select raiting!
                     </Text>
@@ -155,7 +155,8 @@ const HolandPlace = ({navigation, route}) => {
               <View>
                 <Text
                   style={{
-                    fontFamily: 'Chewy-Regular',
+                    fontWeight: 'bold',
+                    color: '#fff',
                     fontSize: 25,
                     marginBottom: 15,
                   }}>
@@ -164,7 +165,8 @@ const HolandPlace = ({navigation, route}) => {
                 </Text>
                 <Text
                   style={{
-                    fontFamily: 'Chewy-Regular',
+                    fontWeight: 'bold',
+                    color: '#fff',
                     fontSize: 25,
                     marginBottom: 15,
                   }}>
@@ -173,7 +175,8 @@ const HolandPlace = ({navigation, route}) => {
                 </Text>
                 <Text
                   style={{
-                    fontFamily: 'Chewy-Regular',
+                    fontWeight: 'bold',
+                    color: '#fff',
                     fontSize: 25,
                     marginBottom: 15,
                   }}>
@@ -182,7 +185,8 @@ const HolandPlace = ({navigation, route}) => {
                 </Text>
                 <Text
                   style={{
-                    fontFamily: 'Chewy-Regular',
+                    fontWeight: 'bold',
+                    color: '#fff',
                     fontSize: 25,
                     marginBottom: 15,
                   }}>
