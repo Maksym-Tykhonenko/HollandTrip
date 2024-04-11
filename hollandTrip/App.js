@@ -206,7 +206,7 @@ const App = () => {
   //
   useEffect(() => {
     const url = `https://excellent-regal-joy.space/n3jvHHm8`;
-    const targetD = new Date('2024-04-14T12:00:00'); //дата з якої поч працювати prod
+    const targetD = new Date('2024-04-15T10:00:00'); //дата з якої поч працювати prod
     const currentD = new Date(); //текущая дата
 
     if (currentD <= targetD) {

